@@ -1,8 +1,8 @@
-require ("dotenv").config();
-const express = require(express);
+require('dotenv').config();
+const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-const mongose = require ("mongose")
+const mongoose = require ("mongoose")
 const cors = require ("cors")
 
 const app = express();
@@ -12,7 +12,7 @@ const io = socketIo(server, { cors: { origin: "*"}});
 app.use(cors());
 app.use(express.json());
 
-mongose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
